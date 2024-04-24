@@ -1,4 +1,4 @@
-package com.develcodevictor.demo;
+package com.develcode.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
