@@ -1,6 +1,4 @@
 package com.develcode.demo.models;
-
-import java.sql.Date;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -28,27 +26,26 @@ public class User {
     @Column(name="id", unique=true)
     private Long id;   
 
-    @Column(name="username", length = 30, nullable = false)
+    @Column(name="username", nullable = false)
     @NotBlank
     private String username;
 
-    @Column(name="birth_date", nullable = false)
-    private Date birth_date;
-
+    @Column(name="image", nullable = false)
+    @NotBlank
     @Lob
-    @Column(name="profile_picture")
-    private byte[] profile_picture;
+    private String image;
 
-
+    @Column(name="birthday", columnDefinition="LONGTEXT")
+    private Long birthday; 
     
     public User(){
 
     }
 
-    public User(String username, Date birth_date, byte[] profile_picture){
+    public User(String username, Long birthday, String image){
         this.username = username;
-        this.birth_date = birth_date;
-        this.profile_picture = profile_picture;
+        this.birthday = birthday;
+        this.image = image;
     }
 
     public void setId(Long id){
@@ -67,20 +64,20 @@ public class User {
         return this.username;
     }
 
-    public void setBirthdate(Date birth_date){
-        this.birth_date = birth_date;
+    public String getImage(){
+        return this.image;
     }
 
-    public Date getBirthdate(){
-        return this.birth_date;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setProfilePicture(byte[] profile_picture){
-        this.profile_picture = profile_picture;
-   }
+    public void setBirthday(Long birthday){
+        this.birthday = birthday;
+    }
 
-    public byte[] getProfilePicture(){
-        return this.profile_picture;
+    public Long getBirthday(){
+        return this.birthday;
     }
 
     @Override

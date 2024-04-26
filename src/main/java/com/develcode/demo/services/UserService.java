@@ -3,6 +3,9 @@ package com.develcode.demo.services;
 import java.sql.Date;
 import java.util.Optional;
 
+import javax.swing.plaf.metal.MetalBorders.OptionDialogBorder;
+
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +37,8 @@ public class UserService {
     public User update(User obj){
         User newObj = findById(obj.getId());
         newObj.setUsername(obj.getUsername());
-        newObj.setBirthdate(obj.getBirthdate());
-        newObj.setProfilePicture(obj.getProfilePicture());
+        newObj.setImage(newObj.getImage());
+        newObj.setBirthday(obj.getBirthday());
         return newObj;
     }
 

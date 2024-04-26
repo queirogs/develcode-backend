@@ -1,9 +1,10 @@
 package com.develcode.demo.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.develcode.demo.models.User;
 import com.develcode.demo.models.User.CreateUser;
 import com.develcode.demo.models.User.UpdateUser;
+import com.develcode.demo.repositories.UserRepository;
 import com.develcode.demo.services.UserService;
 
 import jakarta.validation.Valid;
@@ -31,10 +33,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("/{id}") 
     public ResponseEntity<User> findById(@PathVariable Long id){
         User obj = this.userService.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> users = this.userRepository.findAll();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PostMapping
