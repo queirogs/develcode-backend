@@ -10,21 +10,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name=User.TABLE_NAME)
 public class User {
     public static final String TABLE_NAME = "user";
 
+    public interface CreateUser{
+    }
+
+    public interface UpdateUser{
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", unique=true)
-    private Long id;
+    private Long id;   
 
     @Column(name="username", length = 30, nullable = false)
+    @NotBlank
     private String username;
 
-    @Column(name="birth_date")
+    @Column(name="birth_date", nullable = false)
     private Date birth_date;
 
     @Lob
@@ -32,7 +40,7 @@ public class User {
     private byte[] profile_picture;
 
 
-
+    
     public User(){
 
     }

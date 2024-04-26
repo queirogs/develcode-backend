@@ -31,23 +31,11 @@ public class UserService {
     }
 
     @Transactional
-    public User update(User obj, String username){
+    public User update(User obj){
         User newObj = findById(obj.getId());
-        newObj.setUsername(username);
-        return newObj;
-    }
-
-    @Transactional
-    public User update(User obj, Date birth_date){
-        User newObj = findById(obj.getId());
-        newObj.setBirthdate(birth_date);
-        return newObj;
-    }
-
-    @Transactional
-    public User update(User obj, byte[] profile_picture){
-        User newObj = findById(obj.getId());
-        newObj.setProfilePicture(profile_picture);
+        newObj.setUsername(obj.getUsername());
+        newObj.setBirthdate(obj.getBirthdate());
+        newObj.setProfilePicture(obj.getProfilePicture());
         return newObj;
     }
 
