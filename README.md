@@ -22,7 +22,7 @@ spring.datasource.password=sua senha
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 
-Como Executar
+## Como Executar
 - Clone este repositório:
 bash
 Copy code
