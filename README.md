@@ -4,10 +4,9 @@ Este é o repositório do backend para um sistema simples de cadastro de usuári
 ## Tecnologias Utilizadas
 - Java Spring Boot: Framework de desenvolvimento de aplicações web em Java.
 - MySQL: Sistema de gerenciamento de banco de dados relacional.
-Spring Data JPA: Facilita o acesso e a persistência de dados em bancos de dados relacionais no Spring.
-Spring Security: Fornece autenticação e autorização para a aplicação.
-Spring Web: Facilita o desenvolvimento de aplicativos web usando Spring MVC.
-Maven: Gerenciador de dependências para Java.
+- Spring Data JPA: Facilita o acesso e a persistência de dados em bancos de dados relacionais no Spring.
+- Spring Web: Facilita o desenvolvimento de aplicativos web usando Spring MVC.
+- Maven: Gerenciador de dependências para Java.
 
 ## Pré-requisitos
 - JDK 8 ou superior instalado
@@ -16,9 +15,12 @@ Maven: Gerenciador de dependências para Java.
 Configure as credenciais do banco de dados no arquivo application.properties:
 bash
 Copy code
-spring.datasource.url=jdbc:mysql://localhost:3306/cadastro_usuarios
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/develcode?createDatabaseIfNotExist=true
+spring.datasource.username=seu usuario
+spring.datasource.password=sua senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 
 Como Executar
 - Clone este repositório:
@@ -36,10 +38,8 @@ Copy code
 O backend estará disponível em http://localhost:8080.
 
 ## Endpoints
-/api/usuarios: Retorna a lista de todos os usuários cadastrados.
-/api/usuarios/{id}: Retorna as informações de um usuário específico.
-/api/usuarios/criar: Cria um novo usuário.
-/api/usuarios/{id}/atualizar: Atualiza as informações de um usuário existente.
-/api/usuarios/{id}/excluir: Exclui um usuário existente.
-Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+- (GET) /user Retorna a lista de todos os usuários cadastrados.
+- (GET) /user/{id} Retorna o usuário cadastrado correspondente ao id da URL
+- (POST) /user Insere um nvo usuário
+- (PUT) /user/{id} Atualiza o usuário com id correspondente ao da URL
+- (DELETE) /user/{id} Remove o usuário com o id correspondente ao da URL
